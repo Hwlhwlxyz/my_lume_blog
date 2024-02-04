@@ -1,0 +1,11 @@
+@import "css/globals.css";
+@import "css/Home.module.css";
+@import "css/github-markdown.min.css";
+
+:root {
+  --color-link: var(--color-base);
+  --color-link-hover: var(--color-dim);
+
+}
+
+

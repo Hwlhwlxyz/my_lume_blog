@@ -1,0 +1,5 @@
+blogHeadTitle: Your Blog Name
+head: |
+  <script src="
+    yourscripthere
+  "></script>

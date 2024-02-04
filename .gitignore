@@ -1,0 +1,5 @@
+posts/*.md
+_site
+_bin
+deno.lock
+user_data
