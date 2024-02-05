@@ -1,3 +1,5 @@
+import { CHAR_0 } from "https://deno.land/std@0.210.0/path/_common/constants.ts";
+
 export interface IPageData {
   url: string;
   results: IResult[];
@@ -5,6 +7,7 @@ export interface IPageData {
   comp: any;
   search: any;
   blogHeadTitle: string;
+  summaryLength: number;
 }
 
 export interface IResult {
@@ -41,15 +44,16 @@ export default ({
   search,
   comp,
   blogHeadTitle,
+  summaryLength,
 }: IPageData) => {
-  const tagArray = search.values("tags");
+  console.log("summaryLength", summaryLength);
   return (
     <div style={{ display: "flex" }}>
       <div className="container">
         <head>
           <link rel="stylesheet" href="/styles.css"></link>
         </head>
-        <div className={""}>
+        <div>
           <div>
             <div>
               {results.map((r) => {
@@ -64,7 +68,9 @@ export default ({
                     <div className={"postStyles.dateStyle"}>
                       {r.date.toLocaleDateString()}
                     </div>
-                    <p>{r.content}</p>
+                    <p>
+                      {r.content?.slice(0, summaryLength ? summaryLength : 100)}
+                    </p>
                     <div>
                       <comp.TagBlock tags={r.tags} />
                     </div>

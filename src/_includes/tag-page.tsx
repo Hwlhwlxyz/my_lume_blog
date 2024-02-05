@@ -6,6 +6,7 @@ type ITagPageData = {
     currentTag: string;
   };
   comp: any;
+  summaryLength: number;
 };
 
 export const layout = "base.vto";
@@ -16,6 +17,7 @@ export default ({
   currentTag,
   pagination,
   comp,
+  summaryLength,
 }: ITagPageData) => {
   return (
     <div className={"container"} style={{ width: "100%" }}>
@@ -37,7 +39,9 @@ export default ({
                 <div className={"postStyles.dateStyle"}>
                   {r.date.toLocaleDateString()}
                 </div>
-                <p>{r.content}</p>
+                <p>
+                  {r.content?.slice(0, summaryLength ? summaryLength : 100)}
+                </p>
                 <div>
                   <comp.TagBlock tags={r.tags} />
                 </div>

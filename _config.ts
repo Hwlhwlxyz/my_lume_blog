@@ -26,18 +26,15 @@ site.remoteFile(
 
 let user_data_files = [];
 for await (const dirEntry of walk("./user_data")) {
-  console.log("Recursive walking:", dirEntry.name, dirEntry.path, `./src/${dirEntry.path}`);
   user_data_files.push(dirEntry.name);
   site.remoteFile(`./post/${dirEntry.name}`, import.meta.resolve(`./${dirEntry.path}`));
 }
+const text = await Deno.readTextFile("user_data/site.yml");
+console.log(text)
+const data: any = parse(text);
+site.data("blogHeadTitle", data.blogHeadTitle);
+site.data("head", data.head);
+site.data("summaryLength", data.summaryLength);
 
-site.addEventListener("beforeBuild", async () => {
-  console.log("The build is about to start");
-  const text = await Deno.readTextFile("user_data/site.yml");
-  console.log(text)
-  const data: any = parse(text);
-  site.data("blogHeadTitle", data.blogHeadTitle);
-  site.data("head", data.head)
-});
 
 export default site;

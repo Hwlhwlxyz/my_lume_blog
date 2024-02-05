@@ -1,4 +1,5 @@
 blogHeadTitle: Your Blog Name
+summaryLength: 200
 head: |
   <script src="
     yourscripthere
