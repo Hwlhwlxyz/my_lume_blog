@@ -18,12 +18,13 @@ site.use(jsx());
 site.use(postcss());
 site.ignore("user_data_template");
 
-
+// css file
 site.remoteFile(
   "_includes/css/github-markdown.min.css",
   "https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown-light.css"
 )
 
+// user data
 let user_data_files = [];
 for await (const dirEntry of walk("./user_data/post_data")) {
   user_data_files.push(dirEntry.name);
