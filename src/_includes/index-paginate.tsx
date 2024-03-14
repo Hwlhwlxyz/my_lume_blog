@@ -65,7 +65,7 @@ export default ({
                     </h2>
 
                     <div className={"postStyles.dateStyle"}>
-                      {r.date.toLocaleDateString() + r.title+String(r.basename)}
+                      {r.date.toLocaleDateString()}
                     </div>
                     <p>
                       {r.content?.slice(0, summaryLength ? summaryLength : 100)}
