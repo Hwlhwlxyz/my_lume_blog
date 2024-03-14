@@ -1,5 +1,3 @@
-import { CHAR_0 } from "https://deno.land/std@0.210.0/path/_common/constants.ts";
-
 export interface IPageData {
   url: string;
   results: IResult[];
@@ -57,6 +55,7 @@ export default ({
           <div>
             <div>
               {results.map((r) => {
+                console.log(r)
                 return (
                   <div>
                     <h2>
@@ -66,7 +65,7 @@ export default ({
                     </h2>
 
                     <div className={"postStyles.dateStyle"}>
-                      {r.date.toLocaleDateString()}
+                      {r.date.toLocaleDateString() + r.title+String(r.basename)}
                     </div>
                     <p>
                       {r.content?.slice(0, summaryLength ? summaryLength : 100)}

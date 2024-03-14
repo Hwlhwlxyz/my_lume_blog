@@ -25,10 +25,11 @@ site.remoteFile(
 )
 
 let user_data_files = [];
-for await (const dirEntry of walk("./user_data")) {
+for await (const dirEntry of walk("./user_data/post_data")) {
   user_data_files.push(dirEntry.name);
   site.remoteFile(`./post/${dirEntry.name}`, import.meta.resolve(`./${dirEntry.path}`));
 }
+console.log("user_data_files:",user_data_files)
 const text = await Deno.readTextFile("user_data/site.yml");
 console.log(text)
 const data: any = parse(text);
